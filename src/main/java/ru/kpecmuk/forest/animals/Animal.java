@@ -1,5 +1,10 @@
 package ru.kpecmuk.forest.animals;
 
+/**
+ * Абстрактный класс. Это означает то что нельзя сделать его экземпляр.
+ * Короче нельзя создать просто животное. Тут скорее сосредоточены основные
+ * признаки, которые есть у всех животных: рост, вес, возможно имя.
+ */
 public abstract class Animal implements IAnimal {
     private String name;
     private int strength;
@@ -20,6 +25,14 @@ public abstract class Animal implements IAnimal {
         this.strength = strength;
     }
 
+    /**
+     * Сразу на входе считаем что проиграл объект enemy.
+     * Если какая-то проверка сработала, просто меняем результат
+     * на объект this
+     *
+     * @param enemy на входе принимает объект IAnimal
+     * @return проигравший
+     */
     public IAnimal fightVS(IAnimal enemy) {
         IAnimal result = enemy;
 

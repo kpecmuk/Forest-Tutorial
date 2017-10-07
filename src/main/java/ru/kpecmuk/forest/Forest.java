@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author kpecmuk
- * @since 01.10.2017
+ * Тут мы создаёт список List для хранения объектов типа IAnimal.
+ * Это называется композиция. Связь объектов через интерфейсы.
  */
 class Forest {
     private List<IAnimal> forestAnimals = new ArrayList<>();
@@ -42,7 +42,12 @@ class Forest {
     }
 
     /**
-     * Битва между животными
+     * Битва между животными.
+     * Для начала определяем участников. И потом выполняем инструкцию
+     * removeAnimal(animalA.fightVS(animalB)), которая удалит проигравшего
+     * из леса навсегда. Тоесть используется результат боя между
+     * animalA.fightVS(animalB), где возвращается объект (проигравший)
+     * для удаления.
      *
      * @param fighterA Имя первого участника
      * @param fighterB Имя второго участника
@@ -60,8 +65,8 @@ class Forest {
             }
         }
         try {
-            assert animalA != null;
-            assert animalB != null;
+            assert animalA != null; // здесь проверяем чтобы все участники были определены
+            assert animalB != null; // чтобы не получить NullPointerException
             System.out.println(animalA.getName() + " vs " + animalB.getName());
             removeAnimal(animalA.fightVS(animalB));
         } catch (NullPointerException e) {
