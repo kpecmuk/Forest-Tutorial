@@ -2,12 +2,11 @@ package ru.kpecmuk.forest.animals;
 
 public class Lion extends Animal {
     public Lion(String name, int strength) {
-        setName(name);
-        setStrength(strength);
+        super(name, strength);
     }
 
     @Override
-    public String toString() {
-        return ("Лев " + getName() + " живёт в лесу");
+    public String getType() {
+        return "Лев";
     }
 }

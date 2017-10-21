@@ -5,24 +5,28 @@ package ru.kpecmuk.forest.animals;
  * Короче нельзя создать просто животное. Тут скорее сосредоточены основные
  * признаки, которые есть у всех животных: рост, вес, возможно имя.
  */
-public abstract class Animal implements IAnimal {
+public abstract class Animal implements I_Animal {
     private String name;
     private int strength;
 
+    Animal(String name, int strength) {
+        this.name = name;
+        this.strength = strength;
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public int getStrength() {
         return this.strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    @Override
+    public String toString() {
+        return getType() + " по имени " + getName() + " живёт в лесу";
     }
 
     /**
@@ -30,21 +34,15 @@ public abstract class Animal implements IAnimal {
      * Если какая-то проверка сработала, просто меняем результат
      * на объект this
      *
-     * @param enemy на входе принимает объект IAnimal
+     * @param enemy на входе принимает объект Animal
      * @return проигравший
      */
-    public IAnimal fightVS(IAnimal enemy) {
-        IAnimal result = enemy;
+    public Animal fightVS(Animal enemy) {
+        Animal result = enemy;
 
         if (this.getStrength() < enemy.getStrength()) {
             result = this;
         }
-
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return ("В лесу живёт животное");
     }
 }

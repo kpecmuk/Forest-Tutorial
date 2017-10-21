@@ -1,6 +1,6 @@
 package ru.kpecmuk.forest;
 
-import ru.kpecmuk.forest.animals.IAnimal;
+import ru.kpecmuk.forest.animals.Animal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
  * Это называется композиция. Связь объектов через интерфейсы.
  */
 class Forest {
-    private List<IAnimal> forestAnimals = new ArrayList<>();
+    private final List<Animal> forestAnimals = new ArrayList<>();
 
-    void addNewAnimal(IAnimal animal) {
+    void addNewAnimal(Animal animal) {
         this.forestAnimals.add(animal);
     }
 
@@ -22,23 +22,23 @@ class Forest {
      * @param name Имя животного в качестве параметра
      */
     void removeAnimal(String name) {
-        System.out.println("Ущем и убираем животное с именем: " + name);
-        for (IAnimal forestAnimal : forestAnimals) {
-            if (forestAnimal.getName().equals(name)) {
-                System.out.println(forestAnimal.getName() + " больше не живёт в лесу");
-                this.forestAnimals.remove(forestAnimal);
+        boolean result = false;
+        System.out.println("Ищем и убираем животное с именем " + name);
+        for (Animal animal : forestAnimals) {
+            if (animal.getName().equals(name)) {
+                result = true;
+                removeAnimal(animal);
                 break;
             }
+        }
+        if (!result) {
+            System.out.println(name + " не найден");
         }
     }
 
-    private void removeAnimal(IAnimal animal) {
-        for (IAnimal forestAnimal : forestAnimals) {
-            if (forestAnimal.equals(animal)) {
-                removeAnimal(animal.getName());
-                break;
-            }
-        }
+    private void removeAnimal(Animal animal) {
+        System.out.println(animal.getType() + " по имени " + animal.getName() + " больше не живёт в лесу");
+        this.forestAnimals.remove(animal);
     }
 
     /**
@@ -53,10 +53,10 @@ class Forest {
      * @param fighterB Имя второго участника
      */
     void fight(String fighterA, String fighterB) {
-        IAnimal animalA = null;
-        IAnimal animalB = null;
+        Animal animalA = null;
+        Animal animalB = null;
 
-        for (IAnimal forestAnimal : forestAnimals) {
+        for (Animal forestAnimal : forestAnimals) {
             if (forestAnimal.getName().equals(fighterA)) {  // Определили первого участника поединка
                 animalA = forestAnimal;
             }
@@ -67,10 +67,13 @@ class Forest {
         try {
             assert animalA != null; // здесь проверяем чтобы все участники были определены
             assert animalB != null; // чтобы не получить NullPointerException
-            System.out.println(animalA.getName() + " vs " + animalB.getName());
+            if (animalA.equals(animalB)) throw new UnsupportedOperationException();
+            System.out.println(animalA.getName() + " VS " + animalB.getName());
             removeAnimal(animalA.fightVS(animalB));
         } catch (NullPointerException e) {
             System.out.println("Битва не состоялась");
+        } catch (UnsupportedOperationException e) {
+            System.out.println("Нельзя биться с самим собой");
         }
     }
 
@@ -78,8 +81,8 @@ class Forest {
      * Выводим на экран список животных из списка forestAnimals
      */
     void tellMeWhoLiveHere() {
-        System.out.println("Animal list:");
-        for (IAnimal forestAnimal : forestAnimals) {
+        System.out.println("В ЛЕСУ ЖИВУТ:");
+        for (Animal forestAnimal : forestAnimals) {
             System.out.println(forestAnimal);
         }
     }

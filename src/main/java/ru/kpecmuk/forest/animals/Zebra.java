@@ -2,12 +2,11 @@ package ru.kpecmuk.forest.animals;
 
 public class Zebra extends Animal {
     public Zebra(String name, int strength) {
-        setName(name);
-        setStrength(strength);
+        super(name, strength);
     }
 
     @Override
-    public String toString() {
-        return ("Зебра " + getName() + " живёт в лесу");
+    public String getType() {
+        return "Зебра";
     }
 }
