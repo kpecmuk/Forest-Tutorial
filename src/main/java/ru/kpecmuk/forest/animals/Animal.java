@@ -15,6 +15,16 @@ public abstract class Animal implements I_Animal {
     }
 
     @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Animal animal = (Animal) o;
+
+        return strength == animal.strength && (name != null ? name.equals(animal.name) : animal.name == null);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }

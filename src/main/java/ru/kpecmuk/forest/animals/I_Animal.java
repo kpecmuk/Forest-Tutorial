@@ -10,5 +10,4 @@ public interface I_Animal {
     String toString();
 
     Animal fightVS(Animal animal);
-
 }
