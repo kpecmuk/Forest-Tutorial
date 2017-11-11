@@ -49,19 +49,19 @@ class Forest {
      * animalA.fightVS(animalB), где возвращается объект (проигравший)
      * для удаления.
      *
-     * @param fighterA Имя первого участника
-     * @param fighterB Имя второго участника
+     * @param firstFighter  Имя первого участника
+     * @param secondFighter Имя второго участника
      */
-    void fight(String fighterA, String fighterB) {
+    void fight(String firstFighter, String secondFighter) {
         Animal animalA = null;
         Animal animalB = null;
 
-        for (Animal forestAnimal : forestAnimals) {
-            if (forestAnimal.getName().equals(fighterA)) {  // Определили первого участника поединка
-                animalA = forestAnimal;
+        for (Animal animal : forestAnimals) {
+            if (animal.getName().equals(firstFighter)) {  // Определили первого участника поединка
+                animalA = animal;
             }
-            if (forestAnimal.getName().equals(fighterB)) {  // Определили второго участника поединка
-                animalB = forestAnimal;
+            if (animal.getName().equals(secondFighter)) {  // Определили второго участника поединка
+                animalB = animal;
             }
         }
         try {
