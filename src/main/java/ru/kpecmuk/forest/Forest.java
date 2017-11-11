@@ -82,8 +82,6 @@ class Forest {
      */
     void tellMeWhoLiveHere() {
         System.out.println("В ЛЕСУ ЖИВУТ:");
-        for (Animal forestAnimal : forestAnimals) {
-            System.out.println(forestAnimal);
-        }
+        forestAnimals.forEach(System.out::println);
     }
 }
