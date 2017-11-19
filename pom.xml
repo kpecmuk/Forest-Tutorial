@@ -60,7 +60,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ru.kpecmuk.forest.Main</mainClass>
+                            <mainClass>ru.kpecmuk.forest.Main.main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
