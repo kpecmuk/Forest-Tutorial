@@ -2,7 +2,6 @@
 .idea/
 target/
 test/
-src/main/resources/
 .mtj.tmp/
 
 *.jar
