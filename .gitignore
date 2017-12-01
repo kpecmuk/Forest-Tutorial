@@ -1,7 +1,9 @@
-*.iml
 .idea/
+.gradle/
 target/
 test/
+out/
+src/main/resources/
 .mtj.tmp/
 
 *.jar
@@ -9,4 +11,3 @@ test/
 *.ear
 
 hs_err_pid*
-
