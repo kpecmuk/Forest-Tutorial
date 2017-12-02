@@ -19,11 +19,11 @@ class Forest {
     /**
      * Удаление животного из списка forestAnimals
      *
-     * @param name Имя животного в качестве параметра
+     * @param name животного в качестве параметра
      */
     void removeAnimal(String name) {
         boolean result = false;
-        System.out.println("Ищем и убираем животное с именем " + name);
+        System.out.println("Убираем животное с именем " + name);
         for (Animal animal : forestAnimals) {
             if (animal.getName().equals(name)) {
                 result = true;
@@ -43,14 +43,14 @@ class Forest {
 
     /**
      * Битва между животными.
-     * Для начала определяем участников. И потом выполняем инструкцию
-     * removeAnimal(animalA.fightVS(animalB)), которая удалит проигравшего
-     * из леса навсегда. Тоесть используется результат боя между
-     * animalA.fightVS(animalB), где возвращается объект (проигравший)
-     * для удаления.
+     * Для начала определяем участников.
+     * Потом выполняем инструкцию removeAnimal(animalA.fightVS(animalB)),
+     * которая удалит проигравшего из леса навсегда.
+     * Тоесть используется результат боя между animalA.fightVS(animalB),
+     * где возвращается объект (проигравший) для удаления.
      *
-     * @param firstFighter  Имя первого участника
-     * @param secondFighter Имя второго участника
+     * @param firstFighter  Первый участник
+     * @param secondFighter Второй участник
      */
     void fight(String firstFighter, String secondFighter) {
         Animal animalA = null;
@@ -81,7 +81,7 @@ class Forest {
      * Выводим на экран список животных из списка forestAnimals
      */
     void tellMeWhoLiveHere() {
-        System.out.println("В ЛЕСУ ЖИВУТ:");
+        System.out.println("В лесу живут:");
         forestAnimals.forEach(System.out::println);
     }
 }
