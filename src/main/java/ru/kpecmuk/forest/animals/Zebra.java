@@ -1,6 +1,6 @@
 package ru.kpecmuk.forest.animals;
 
-public class Zebra extends Animal {
+public final class Zebra extends Animal {
     public Zebra(String name, int strength) {
         super(name, strength);
     }
