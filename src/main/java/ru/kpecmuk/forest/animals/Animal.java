@@ -6,8 +6,8 @@ package ru.kpecmuk.forest.animals;
  * признаки, которые есть у всех животных: рост, вес, возможно имя.
  */
 public abstract class Animal implements I_Animal {
-    private String name;
-    private int strength;
+    private final String name;
+    private final int strength;
 
     Animal(String name, int strength) {
         this.name = name;
@@ -25,17 +25,17 @@ public abstract class Animal implements I_Animal {
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return this.name;
     }
 
     @Override
-    public int getStrength() {
+    public final int getStrength() {
         return this.strength;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return getType() + " по имени " + getName() + " живёт в лесу";
     }
 
@@ -47,7 +47,7 @@ public abstract class Animal implements I_Animal {
      * @param enemy на входе принимает объект Animal
      * @return проигравший
      */
-    public Animal fightVS(Animal enemy) {
+    public final Animal fightVS(Animal enemy) {
         Animal result = enemy;
 
         if (this.getStrength() < enemy.getStrength()) {

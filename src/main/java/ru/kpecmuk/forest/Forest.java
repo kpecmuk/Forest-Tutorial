@@ -2,8 +2,10 @@ package ru.kpecmuk.forest;
 
 import ru.kpecmuk.forest.animals.Animal;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Тут мы создаёт список List для хранения объектов типа IAnimal.
@@ -11,6 +13,15 @@ import java.util.List;
  */
 class Forest {
     private final List<Animal> forestAnimals = new ArrayList<>();
+    private PrintStream ps;
+
+    Forest() {
+        Scanner sc = new Scanner(System.in, "utf-8");
+        System.setProperty("console.encoding", "utf-8");
+        String encoding = System.getProperty("console.encoding", "utf-8");
+
+        this.ps = new PrintStream(System.out, Boolean.parseBoolean(encoding));
+    }
 
     void addNewAnimal(Animal animal) {
         this.forestAnimals.add(animal);
@@ -23,7 +34,7 @@ class Forest {
      */
     void removeAnimal(String name) {
         boolean result = false;
-        System.out.println("Убираем животное с именем " + name);
+        ps.println("Убираем животное с именем " + name);
         for (Animal animal : forestAnimals) {
             if (animal.getName().equals(name)) {
                 result = true;
@@ -32,12 +43,12 @@ class Forest {
             }
         }
         if (!result) {
-            System.out.println(name + " не найден");
+            ps.println(name + " не найден");
         }
     }
 
     private void removeAnimal(Animal animal) {
-        System.out.println(animal.getType() + " по имени " + animal.getName() + " больше не живёт в лесу");
+        ps.println(animal.getType() + " по имени " + animal.getName() + " больше не живёт в лесу");
         this.forestAnimals.remove(animal);
     }
 
@@ -68,12 +79,12 @@ class Forest {
             assert animalA != null; // здесь проверяем чтобы все участники были определены
             assert animalB != null; // чтобы не получить NullPointerException
             if (animalA.equals(animalB)) throw new UnsupportedOperationException();
-            System.out.println(animalA.getName() + " VS " + animalB.getName());
+            ps.println(animalA.getName() + " VS " + animalB.getName());
             removeAnimal(animalA.fightVS(animalB));
         } catch (NullPointerException e) {
-            System.out.println("Битва не состоялась");
+            ps.println("Битва не состоялась");
         } catch (UnsupportedOperationException e) {
-            System.out.println("Нельзя биться с самим собой");
+            ps.println("Нельзя биться с самим собой");
         }
     }
 
@@ -81,7 +92,7 @@ class Forest {
      * Выводим на экран список животных из списка forestAnimals
      */
     void tellMeWhoLiveHere() {
-        System.out.println("В лесу живут:");
-        forestAnimals.forEach(System.out::println);
+        ps.println("В лесу живут:");
+        forestAnimals.forEach(ps::println);
     }
 }

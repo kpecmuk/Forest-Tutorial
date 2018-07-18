@@ -6,7 +6,7 @@ public final class Tiger extends Animal {
     }
 
     @Override
-    public String getType() {
+    public final String getType() {
         return "Тигр";
     }
 }

@@ -3,6 +3,7 @@ package ru.kpecmuk.forest;
 import ru.kpecmuk.forest.animals.*;
 
 public class Main {
+
     public static void main(String[] args) {
 
         // Создаём лес
@@ -25,7 +26,7 @@ public class Main {
         forest.tellMeWhoLiveHere();
 
         // Устраиваем битву
-        forest.fight("Миша", "Бэмби");
+        forest.fight("Бэмби", "Миша");
         forest.tellMeWhoLiveHere();
     }
 }
