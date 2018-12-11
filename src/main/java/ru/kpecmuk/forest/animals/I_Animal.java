@@ -3,7 +3,7 @@ package ru.kpecmuk.forest.animals;
 public interface I_Animal {
     String getName();
 
-    String getType();
+    String getAnimalType();
 
     int getStrength();
 

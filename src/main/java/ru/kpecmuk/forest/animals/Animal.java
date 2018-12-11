@@ -36,7 +36,7 @@ public abstract class Animal implements I_Animal {
 
     @Override
     public final String toString() {
-        return getType() + " по имени " + getName() + " живёт в лесу";
+        return getAnimalType() + " по имени " + getName() + " живёт в лесу";
     }
 
     /**

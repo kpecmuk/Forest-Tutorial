@@ -48,7 +48,7 @@ class Forest {
     }
 
     private void removeAnimal(Animal animal) {
-        ps.println(animal.getType() + " по имени " + animal.getName() + " больше не живёт в лесу");
+        ps.println(animal.getAnimalType() + " по имени " + animal.getName() + " больше не живёт в лесу");
         this.forestAnimals.remove(animal);
     }
 
@@ -79,7 +79,8 @@ class Forest {
             assert animalA != null; // здесь проверяем чтобы все участники были определены
             assert animalB != null; // чтобы не получить NullPointerException
             if (animalA.equals(animalB)) throw new UnsupportedOperationException();
-            ps.println(animalA.getName() + " VS " + animalB.getName());
+            ps.println("Начинаем битву: " + animalA.getAnimalType() + " " + animalA.getName() + " VS "
+                    + animalB.getAnimalType() + " " + animalB.getName());
             removeAnimal(animalA.fightVS(animalB));
         } catch (NullPointerException e) {
             ps.println("Битва не состоялась");
